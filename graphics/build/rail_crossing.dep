@@ -1,0 +1,4 @@
+render : build/rail_crossing_0000.png build/rail_crossing_mask_0000.png build/rail_crossing_0001.png build/rail_crossing_mask_0001.png
+build/rail_crossing_%.png build/rail_crossing_mask_%.png : src/blend/rail_crossing.blend src/blend/shared/camera.blend src/blend/shared/cycles_shadowcatcher.blend src/blend/shared/lighting_world.blend src/blend/rail_tracks.blend src/blend/shared/materials/rusty_metal.blend src/blend/shared/materials/steel.blend
+	$(_E) "[GRAPHICS] [BLENDER-RENDER] src/blend/rail_crossing.blend frame $* -> $@"
+	$(_V) blender -noaudio --factory-startup --background src/blend/rail_crossing.blend --engine CYCLES --threads 1 --python src/blender_render_settings.py --render-frame $* -- 20 > /dev/null

@@ -1,0 +1,72 @@
+include src/Makefile.path
+
+BLENDPATH := $(SRCPATH)/blend
+
+BLENDUTIL := $(SRCPATH)/jbase/get_blend_deps.py
+
+PY := $(wildcard $(SRCPATH)/*.py)
+PYNML := $(patsubst %.py,$(BUILDPATH)/%.pynml,$(notdir $(PY)))
+PYDEP := $(patsubst %.py,$(BUILDPATH)/%.pydep,$(notdir $(PY)))
+BLEND := $(wildcard $(BLENDPATH)/*.blend)
+BLENDDEP := $(patsubst %.blend,$(BUILDPATH)/%.blenddep,$(notdir $(BLEND)))
+
+GFX_DEP := $(BUILDPATH)/Makefile_gfx.dep
+
+### NML GENERATION ###
+
+jbase.nml: $(PYNML) src/Makefile.in
+	$(_E) "[CAT NML] *.pynml -> $@"
+	$(_V) for file in $(PYNML); do \
+	          echo "/*"; \
+	          echo "--BEGIN-- $$file"; \
+	          echo "*/"; \
+	          cat "$$file"; \
+	          echo "/*"; \
+	          echo "--END OF --$$file"; \
+	          echo "*/"; \
+	      done > $@
+
+# Create .pynmls to build path with the same stem as .py files
+$(PYNML): $(BUILDPATH)/%.pynml: $(SRCPATH)/%.py
+	$(_E) "[PYTHON] $< -> $@"
+	$(_V) python $< $@ print_nml
+
+### NML GENERATION ENDS ###
+
+
+
+### GFX GENERATION ###
+
+# Don't include for clean targets
+ifneq ($(MAKECMDGOALS), clean)
+ifneq ($(MAKECMDGOALS), maintainer-clean)
+-include $(GFX_DEP)
+endif
+endif
+
+full-render: $(GFX_DEP)
+
+$(GFX_DEP): $(PYDEP)
+	$(_E) "[CAT GFX-DEP] *.pydep -> $@"
+	$(_V) for file in $(PYDEP); do \
+	          cat "$$file"; \
+	          echo; \
+	          echo; \
+	      done > $@
+
+$(PYDEP): $(BUILDPATH)/%.pydep: $(SRCPATH)/%.py $(BLENDDEP)
+	$(_E) "[PYTHON] $< -> $@"
+	$(_V) python $< $@ print_dep 
+
+$(BLENDDEP): $(BUILDPATH)/%.blenddep: $(BLENDPATH)/%.blend $(PY)
+	$(_E) "[BLENDER-PYTHON] $< -> $@"
+	$(_V) python $(BLENDUTIL) $< $@
+
+clean::
+	$(_E) "[CLEAN BUILD]"
+	$(_V) find $(BUILDPATH) -maxdepth 1 -type f \
+	      -not -name "*rendered.png" -exec rm -fv {} \;
+
+maintainer-clean::
+	$(_E) "[MAINTAINER-CLEAN BUILD]"
+	$(_V) find $(BUILDPATH) -maxdepth 1 -type f -exec rm -fv {} \;

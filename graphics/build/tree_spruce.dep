@@ -1,0 +1,4 @@
+render : build/tree_spruce_0000.png build/tree_spruce_0001.png build/tree_spruce_0002.png build/tree_spruce_0003.png build/tree_spruce_0004.png build/tree_spruce_0005.png build/tree_spruce_0006.png
+build/tree_spruce_%.png : src/blend/tree_spruce.blend src/blend/shared/cycles_shadowcatcher.blend src/blend/shared/lighting_world.blend src/blend/shared/camera.blend
+	$(_E) "[GRAPHICS] [BLENDER-RENDER] src/blend/tree_spruce.blend frame $* -> $@"
+	$(_V) blender -noaudio --factory-startup --background src/blend/tree_spruce.blend --engine CYCLES --threads 1 --python src/blender_render_settings.py --render-frame $* -- 20 > /dev/null

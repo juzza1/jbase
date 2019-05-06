@@ -1,0 +1,93 @@
+// Replace temperate grass
+
+replace ground_barren(3981)
+{
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+	[0, 0, "src/empty_8bpp.png"]
+}
+
+alternative_sprites (ground_barren, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP)
+{
+	[-31, -17, "build/masks/ground_mask_32bpp_1x_0000.png"]
+	[-31, -17, "build/masks/ground_mask_32bpp_1x_0001.png"]
+	[-31, -17, "build/masks/ground_mask_32bpp_1x_0002.png"]
+	[-31, -21, "build/masks/ground_mask_32bpp_1x_0003.png"]
+	[-31, -17, "build/masks/ground_mask_32bpp_1x_0004.png"]
+	[-31, -17, "build/masks/ground_mask_32bpp_1x_0005.png"]
+	[-31, -21, "build/masks/ground_mask_32bpp_1x_0006.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0007.png"]
+	[-31, -17, "build/masks/ground_mask_32bpp_1x_0008.png"]
+	[-31, -21, "build/masks/ground_mask_32bpp_1x_0009.png"]
+	[-31, -17, "build/masks/ground_mask_32bpp_1x_0010.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0011.png"]
+	[-31, -21, "build/masks/ground_mask_32bpp_1x_0012.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0013.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0014.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0015.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0016.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0017.png"]
+	[-31, -25, "build/masks/ground_mask_32bpp_1x_0018.png"]
+}
+
+alternative_sprites (ground_barren, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP)
+{
+	[-31*2, -17*2, "build/masks/ground_mask_32bpp_2x_0000.png"]
+	[-31*2, -17*2, "build/masks/ground_mask_32bpp_2x_0001.png"]
+	[-31*2, -17*2, "build/masks/ground_mask_32bpp_2x_0002.png"]
+	[-31*2, -21*2, "build/masks/ground_mask_32bpp_2x_0003.png"]
+	[-31*2, -17*2, "build/masks/ground_mask_32bpp_2x_0004.png"]
+	[-30*2, -17*2, "build/masks/ground_mask_32bpp_2x_0005.png"]
+	[-31*2, -21*2, "build/masks/ground_mask_32bpp_2x_0006.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0007.png"]
+	[-31*2, -17*2, "build/masks/ground_mask_32bpp_2x_0008.png"]
+	[-31*2, -21*2, "build/masks/ground_mask_32bpp_2x_0009.png"]
+	[-31*2, -17*2, "build/masks/ground_mask_32bpp_2x_0010.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0011.png"]
+	[-31*2, -21*2, "build/masks/ground_mask_32bpp_2x_0012.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0013.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0014.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0015.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0016.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0017.png"]
+	[-31*2, -25*2, "build/masks/ground_mask_32bpp_2x_0018.png"]
+}
+
+alternative_sprites (ground_barren, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP)
+{
+	[-31*4, -17*4, "build/masks/ground_mask_32bpp_4x_0000.png"]
+	[-31*4, -17*4, "build/masks/ground_mask_32bpp_4x_0001.png"]
+	[-31*4, -17*4, "build/masks/ground_mask_32bpp_4x_0002.png"]
+	[-31*4, -21*4, "build/masks/ground_mask_32bpp_4x_0003.png"]
+	[-31*4, -17*4, "build/masks/ground_mask_32bpp_4x_0004.png"]
+	[-31*4, -17*4, "build/masks/ground_mask_32bpp_4x_0005.png"]
+	[-31*4, -21*4, "build/masks/ground_mask_32bpp_4x_0006.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0007.png"]
+	[-31*4, -17*4, "build/masks/ground_mask_32bpp_4x_0008.png"]
+	[-31*4, -21*4, "build/masks/ground_mask_32bpp_4x_0009.png"]
+	[-31*4, -17*4, "build/masks/ground_mask_32bpp_4x_0010.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0011.png"]
+	[-31*4, -21*4, "build/masks/ground_mask_32bpp_4x_0012.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0013.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0014.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0015.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0016.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0017.png"]
+	[-31*4, -25*4, "build/masks/ground_mask_32bpp_4x_0018.png"]
+}

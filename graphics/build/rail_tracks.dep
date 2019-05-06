@@ -1,0 +1,4 @@
+render : build/rail_tracks_0000.png build/rail_tracks_0001.png build/rail_tracks_0002.png build/rail_tracks_0003.png build/rail_tracks_0004.png build/rail_tracks_0005.png build/rail_tracks_0006.png
+build/rail_tracks_%.png : src/blend/rail_tracks.blend src/blend/shared/cycles_shadowcatcher.blend src/blend/shared/materials/steel.blend src/blend/shared/materials/rusty_metal.blend src/blend/shared/rotator_tracks.blend src/blend/shared/camera.blend src/blend/shared/lighting_world.blend
+	$(_E) "[GRAPHICS] [BLENDER-RENDER] src/blend/rail_tracks.blend frame $* -> $@"
+	$(_V) blender -noaudio --factory-startup --background src/blend/rail_tracks.blend --engine CYCLES --threads 1 --python src/blender_render_settings.py --render-frame $* -- 20 > /dev/null

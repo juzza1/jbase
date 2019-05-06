@@ -1,0 +1,4 @@
+render : build/signal_light_0000.png
+build/signal_light_%.png : src/blend/signal_light.blend src/blend/shared/cycles_shadowcatcher.blend src/blend/shared/materials/signal_green_red.blend src/blend/shared/camera.blend
+	$(_E) "[GRAPHICS] [BLENDER-RENDER] src/blend/signal_light.blend frame $* -> $@"
+	$(_V) blender -noaudio --factory-startup --background src/blend/signal_light.blend --engine CYCLES --threads 1 --python src/blender_render_settings.py --render-frame $* -- 20 > /dev/null

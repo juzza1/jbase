@@ -1,0 +1,4 @@
+render : build/signal_semaphore_0000.png
+build/signal_semaphore_%.png : src/blend/signal_semaphore.blend src/blend/shared/cycles_shadowcatcher.blend src/blend/shared/materials/steel.blend src/blend/shared/camera.blend
+	$(_E) "[GRAPHICS] [BLENDER-RENDER] src/blend/signal_semaphore.blend frame $* -> $@"
+	$(_V) blender -noaudio --factory-startup --background src/blend/signal_semaphore.blend --engine CYCLES --threads 1 --python src/blender_render_settings.py --render-frame $* -- 20 > /dev/null

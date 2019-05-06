@@ -1,0 +1,4 @@
+render : build/foundation_brick_0000.png
+build/foundation_brick_%.png : src/blend/foundation_brick.blend src/blend/shared/cycles_shadowcatcher.blend src/blend/shared/lighting_world.blend src/blend/shared/camera.blend
+	$(_E) "[GRAPHICS] [BLENDER-RENDER] src/blend/foundation_brick.blend frame $* -> $@"
+	$(_V) blender -noaudio --factory-startup --background src/blend/foundation_brick.blend --engine CYCLES --threads 1 --python src/blender_render_settings.py --render-frame $* -- 20 > /dev/null

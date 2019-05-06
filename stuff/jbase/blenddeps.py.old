@@ -1,0 +1,58 @@
+# Python 3.x!
+# Script to save paths of linked libraries for the current blender file
+import bpy
+import os
+import pickle
+import sys
+
+
+# Get filename from command line
+for i, arg in enumerate(sys.argv):
+    if arg == '-b' or '--background':
+        filename = sys.argv[i+1]
+        break
+
+working_path = os.path.dirname(filename)
+
+deps = bpy.utils.blend_paths()
+deps_formatted = []
+# Remove // prefix from relative paths, append the current working dir
+for i in deps:
+    dep = os.path.join(working_path, i[2:])
+    deps_formatted.append(dep)
+
+print(deps_formatted)
+
+# Some tests with multiprocessing, did not work well because this
+# implementation will use pickle protocol 3, which is not compatible with
+# python 2
+
+#address = ('localhost', 6000)
+#conn = Client(address)
+# Send deps via tcp
+#conn.send(deps_formatted)
+#conn.close()
+
+dep_ext = '.blenddep'
+blendname = os.path.basename(bpy.data.filepath)
+blendname_no_ext = os.path.splitext(blendname)[0]
+depname = blendname_no_ext + dep_ext
+
+# Get all the parameters after '--' (the params for the python script)
+script_params = None
+for i, arg in enumerate(sys.argv):
+    if arg == '--':
+        script_params = sys.argv[i+1:]
+        break
+
+# Get the output path for blenddep file from command line, if provided
+if script_params:
+    # Assume first script param is the output path (subject to change)
+    outpath = script_params[0]
+    print('Writing to "{0}"'.format(outpath))
+    with open(outpath, 'wb') as f:
+        pickle.dump(deps_formatted, f)
+        #f.write(filename + ': ')
+        #f.write(' '.join(deps_formatted))
+else:
+    print('No output path given - no blend depency file was written.')

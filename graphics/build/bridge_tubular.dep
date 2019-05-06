@@ -1,0 +1,4 @@
+render : build/bridge_tubular_0000.png
+build/bridge_tubular_%.png : src/blend/bridge_tubular.blend src/blend/shared/cycles_shadowcatcher.blend src/blend/shared/lighting_world.blend src/blend/shared/camera.blend
+	$(_E) "[GRAPHICS] [BLENDER-RENDER] src/blend/bridge_tubular.blend frame $* -> $@"
+	$(_V) blender -noaudio --factory-startup --background src/blend/bridge_tubular.blend --engine CYCLES --threads 1 --python src/blender_render_settings.py --render-frame $* -- 20 > /dev/null
